@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createAccount, login, getUser } from './controllers';
+import { createAccount, login, getUser, updateProfile } from './controllers';
 import { body } from 'express-validator';
 import { handleInputErrors } from './middleware/validations';
 import { authenticate } from './middleware/auth';
@@ -23,6 +23,13 @@ router.post('/auth/login',
 )
 
 router.get('/user', authenticate, getUser)
+
+router.patch('/user', 
+    body('handle').notEmpty().withMessage('Handle field required'),
+    body('description').notEmpty().withMessage('Description field required'),
+    handleInputErrors,
+    authenticate, 
+    updateProfile)
 
 
 export default router;

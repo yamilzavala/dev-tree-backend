@@ -58,3 +58,25 @@ export const login = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
    return res.json(req.user)
 }
+
+export const updateProfile = async (req: Request, res: Response) => {
+    // const user = req.user;
+    // const userExist = await User.findOne({email: user.email})
+    // if(!userExist) {
+    //     const error = new Error('user not found')
+    //     return res.status(404).json({msg: error.message})  
+    // }
+
+    try {
+        console.log(req.body)
+        // const newUser = User.updateOne({
+        //     email: user.email
+        // },
+        // data: {
+        //     request.body
+        // })
+    } catch (e) {
+        const error = new Error('Something went wrong')
+        return res.status(500).json({msg: `Something went wrong: ${error.message}`})
+    }
+}
