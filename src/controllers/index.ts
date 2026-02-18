@@ -60,21 +60,21 @@ export const getUser = async (req: Request, res: Response) => {
 }
 
 export const updateProfile = async (req: Request, res: Response) => {
-    // const user = req.user;
-    // const userExist = await User.findOne({email: user.email})
-    // if(!userExist) {
-    //     const error = new Error('user not found')
-    //     return res.status(404).json({msg: error.message})  
-    // }
-
     try {
-        console.log(req.body)
-        // const newUser = User.updateOne({
-        //     email: user.email
-        // },
-        // data: {
-        //     request.body
-        // })
+        const {description} = req.body;
+
+        const handle = slug(req.body.handle, '')
+        const handleExists = await User.findOne({handle})
+        if(handleExists && handleExists.email !== req.user.email) {
+            const error = new Error('The handle is already registered ') 
+            return res.status(409).json({msg: error.message})
+        }
+
+        // user update
+        req.user.description = description;
+        req.user.handle = handle;
+        await req.user.save()
+        res.status(200).json({msg: 'User updasted successfully'})
     } catch (e) {
         const error = new Error('Something went wrong')
         return res.status(500).json({msg: `Something went wrong: ${error.message}`})
