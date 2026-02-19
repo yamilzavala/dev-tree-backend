@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createAccount, login, getUser, updateProfile } from './controllers';
+import { createAccount, login, getUser, updateProfile, updateImage, updateLinks } from './controllers';
 import { body } from 'express-validator';
 import { handleInputErrors } from './middleware/validations';
 import { authenticate } from './middleware/auth';
@@ -30,6 +30,14 @@ router.patch('/user',
     handleInputErrors,
     authenticate, 
     updateProfile)
+
+router.patch('/user/links', 
+    authenticate, 
+    updateLinks)
+
+router.post('/user/image', 
+    authenticate, 
+    updateImage)
 
 
 export default router;
