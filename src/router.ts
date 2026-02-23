@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createAccount, login, getUser, updateProfile, updateImage, updateLinks, getUserByHandle } from './controllers';
+import { createAccount, login, getUser, updateProfile, updateImage, updateLinks, getUserByHandle, searchByHandle } from './controllers';
 import { body } from 'express-validator';
 import { handleInputErrors } from './middleware/validations';
 import { authenticate } from './middleware/auth';
@@ -26,7 +26,6 @@ router.get('/user', authenticate, getUser)
 
 router.patch('/user', 
     body('handle').notEmpty().withMessage('Handle field required'),
-    body('description').notEmpty().withMessage('Description field required'),
     handleInputErrors,
     authenticate, 
     updateProfile)
@@ -42,6 +41,12 @@ router.post('/user/image',
 router.get('/:handle', 
     authenticate, 
     getUserByHandle
+)
+
+router.post('/:search', 
+    body('handle').notEmpty().withMessage('Handle field required'),
+    handleInputErrors,
+    searchByHandle
 )
 
 

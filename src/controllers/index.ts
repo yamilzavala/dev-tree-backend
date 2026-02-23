@@ -139,3 +139,19 @@ export const getUserByHandle = async (req: Request, res: Response) => {
         return res.status(500).json({ msg: `Something went wrong: ${error.message}` })
     }
 }
+
+export const searchByHandle = async (req: Request, res: Response) => {
+    try {
+        const { handle } = req.body;
+        console.log(handle)
+        const userHandle = await User.findOne({ handle })
+
+        if (userHandle) {
+            const error = new Error(`${handle} has been taken`)
+            return res.status(409).json({ msg: error.message })
+        }
+        return res.send(`${handle} is available`)
+    } catch (error) {
+        return res.status(500).json({ msg: `Something went wrong: ${error.message}` })
+    }
+}
