@@ -11,24 +11,27 @@
   },
   "author": "yamil zavala",
   "license": "ISC",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
-    "bcrypt": "^6.0.0",
+    "bcrypt": "^5.1.1",
     "cloudinary": "^2.9.0",
-    "colors": "^1.4.2",
+    "colors": "^1.4.0",
     "cors": "^2.8.6",
-    "dotenv": "^17.2.4",
-    "express": "^5.2.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
     "express-validator": "^7.3.1",
     "formidable": "^3.5.4",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.2.0",
-    "slug": "^11.0.1",
-    "uuid": "^13.0.0"
+    "mongoose": "^8.9.5",
+    "slug": "^9.1.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
+    "@types/express": "^4.17.21",
     "@types/formidable": "^3.4.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/slug": "^5.0.9",
