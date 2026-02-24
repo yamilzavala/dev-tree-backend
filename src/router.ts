@@ -39,7 +39,6 @@ router.post('/user/image',
     updateImage)
 
 router.get('/:handle', 
-    authenticate, 
     getUserByHandle
 )
 
