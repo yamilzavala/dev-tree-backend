@@ -1,7 +1,4 @@
 # DevTree Backend
-
-
-
 A backend API for DevTree, a platform that allows users to create customized profiles with links and manage their online presence.
 
 ## Project Description
