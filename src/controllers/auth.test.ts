@@ -24,7 +24,7 @@ describe('POST /api/auth/register — success path', () => {
       .set('Origin', ORIGIN)
       .send(userData)
 
-    expect(res.status).toBe(301)
+    expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('msg', 'User registered')
 
     // Verify user was actually created in DB
